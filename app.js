@@ -6,12 +6,12 @@ const app = express();
 
 app.use(express.static('./Public'));
 app.use('/',routes);
-
+const PORT = process.env.PORT || 8000;
 app.use('/',routes);
 const start = async ()=>{
     try{
         await connectDB(process.env.MONGODB_URI);
-        app.listen(8000,console.log("app is listening to port 8000..."))
+        app.listen(PORT,console.log("app is listening to port ${PORT}..."))
     }
     catch(error){
         console.log(error);
